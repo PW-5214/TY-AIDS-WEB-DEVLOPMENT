@@ -6,7 +6,7 @@ This repository contains lab assignments, mini-projects, and learning resources 
 
 ## ✅ Completed Assignments
 
-- [Lab 1 - HTML_CSS_JS Form](./Assignment_no_1.pdf)
+- [Lab 1 - HTML_CSS_JS Form](./Assignment_no_1.html)
 
 More labs will be added as the course progresses.
 
