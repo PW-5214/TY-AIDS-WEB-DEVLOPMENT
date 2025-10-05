@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    input, select {
+      padding: 5px;
+      margin-top: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <marquee behavior="scroll" direction="left">Welcome to Student Registration Form</marquee>
+
+  <div style="text-align: center; margin-top: 20px;">
+
+    <h2>Student Details Form</h2>
+
+    <form id="studentForm">
+      Name: <input type="text" id="name"><br><br>
+      Roll No: <input type="text" id="roll"><br><br>
+      Department: <input type="text" id="dept"><br><br>
+      Age: <input type="number" id="age"><br><br>
+      Gender:
+      <input type="radio" name="gender" value="Male"> Male
+      <input type="radio" name="gender" value="Female"> Female<br><br>
+      Email: <input type="email" id="email"><br><br>
+      Course:
+      <select id="course">
+        <option value="AI & DS">AI & DS</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Electronics">Electronics</option>
+      </select><br><br>
+
+      <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <br>
+    <img src="VPKBIET.jpeg" alt="College Logo" width="200">
+
+  </div>
+
+  <script>
+    function submitForm() {
+      alert("Form Submitted Successfully!");
+    }
+  </script>
+
+</body>
+</html>

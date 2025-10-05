@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam Detection Tool</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        h1 { color: #333; }
+        input { width: 80%; padding: 10px; margin-top: 10px; }
+        button { padding: 10px 20px; margin-left: 10px; cursor: pointer; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Spam Detection Tool</h1>
+    <input id="message" type="text" placeholder="Enter a message">
+    <button onclick="checkSpam()">Check</button>
+    <div id="result" class="result"></div>
+
+    <script>
+        // Core logic: list of common spam keywords
+        const spamKeywords = [
+            "win", "free", "prize", "money", "click", "lottery", "offer", "urgent", "winner", "cash"
+        ];
+
+        function checkSpam() {
+            const message = document.getElementById('message').value.toLowerCase();
+            if (!message.trim()) {
+                alert("Please enter a message!");
+                return;
+            }
+
+            // Split message into words
+            const words = message.split(/\W+/);
+
+            // Check if any spam keyword is present
+            const isSpam = words.some(word => spamKeywords.includes(word));
+
+            const resultDiv = document.getElementById('result');
+            if (isSpam) {
+                resultDiv.innerText = "🚨 Spam detected!";
+                resultDiv.style.color = "red";
+            } else {
+                resultDiv.innerText = "✅ Not Spam";
+                resultDiv.style.color = "green";
+            }
+        }
+    </script>
+</body>
+</html>
