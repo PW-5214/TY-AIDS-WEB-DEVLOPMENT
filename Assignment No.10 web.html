@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Personalized E-commerce Recommendations</title>
+  <style>
+    body { font-family: Arial; margin: 30px; background: #f9f9f9; }
+    h2 { color: #333; }
+    .product, .recommendation {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      margin: 10px;
+      display: inline-block;
+      width: 180px;
+      cursor: pointer;
+      text-align: center;
+      background: #fff;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .product:hover { background: #f0f8ff; }
+    .section { margin-bottom: 40px; }
+  </style>
+</head>
+<body>
+
+  <h1>Personalized E-commerce Page</h1>
+
+  <div class="section">
+    <h2>Available Products</h2>
+    <div id="products"></div>
+  </div>
+
+  <div class="section">
+    <h2>Recommended for You</h2>
+    <div id="recommendations">No recommendations yet.</div>
+  </div>
+
+  <script>
+    // Sample product list
+    const products = [
+      { id: 1, name: 'Laptop', category: 'Electronics' },
+      { id: 2, name: 'Headphones', category: 'Electronics' },
+      { id: 3, name: 'Smartphone', category: 'Electronics' },
+      { id: 4, name: 'Shoes', category: 'Fashion' },
+      { id: 5, name: 'T-Shirt', category: 'Fashion' },
+      { id: 6, name: 'Jacket', category: 'Fashion' },
+      { id: 7, name: 'Coffee Maker', category: 'Home' },
+      { id: 8, name: 'Blender', category: 'Home' },
+      { id: 9, name: 'Vacuum Cleaner', category: 'Home' }
+    ];
+
+    let browsingHistory = [];
+    let recommendedOnce = []; // keeps track of already recommended products
+
+    const productsDiv = document.getElementById('products');
+
+    function renderProducts() {
+      productsDiv.innerHTML = '';
+      products.forEach(product => {
+        const div = document.createElement('div');
+        div.className = 'product';
+        div.innerText = `${product.name}\n(${product.category})`;
+        div.onclick = () => viewProduct(product);
+        productsDiv.appendChild(div);
+      });
+    }
+
+    function viewProduct(product) {
+      alert(`You viewed: ${product.name}`);
+      browsingHistory.push(product);
+      showRecommendations();
+    }
+
+    function showRecommendations() {
+      const recDiv = document.getElementById('recommendations');
+      if (browsingHistory.length === 0) {
+        recDiv.innerText = 'No recommendations yet.';
+        return;
+      }
+
+      const viewedCategories = browsingHistory.map(p => p.category);
+
+      // Recommend products in same categories, exclude already viewed and already recommended
+      const recommended = products.filter(p =>
+        viewedCategories.includes(p.category) &&
+        !browsingHistory.includes(p) &&
+        !recommendedOnce.includes(p)
+      );
+
+      if (recommended.length === 0) {
+        if (recommendedOnce.length === 0) recDiv.innerText = 'No recommendations yet.';
+        else recDiv.innerText = 'No new recommendations at the moment.';
+        return;
+      }
+
+      recDiv.innerHTML = '';
+      recommended.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'recommendation';
+        div.innerText = `${p.name}\n(${p.category})`;
+        recDiv.appendChild(div);
+
+        // mark as already recommended
+        recommendedOnce.push(p);
+      });
+    }
+
+    renderProducts();
+  </script>
+
+</body>
+</html>

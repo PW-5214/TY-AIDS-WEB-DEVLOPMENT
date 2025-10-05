@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Movie Recommendation</title>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+
+    <label>Select your favorite genre:</label>
+    <select id="genreSelect">
+        <option value="">--Select--</option>
+        <option value="Action">Action</option>
+        <option value="Comedy">Comedy</option>
+        <option value="Horror">Horror</option>
+        <option value="Romance">Romance</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+    </select>
+
+    <label>Select movies you liked before:</label>
+    <select id="likedMovies" multiple size="5">
+        <option value="Avengers: Endgame">Avengers: Endgame</option>
+        <option value="Mad Max: Fury Road">Mad Max: Fury Road</option>
+        <option value="The Hangover">The Hangover</option>
+        <option value="Superbad">Superbad</option>
+        <option value="The Conjuring">The Conjuring</option>
+        <option value="It">It</option>
+        <option value="The Notebook">The Notebook</option>
+        <option value="Pride & Prejudice">Pride & Prejudice</option>
+        <option value="Interstellar">Interstellar</option>
+        <option value="Inception">Inception</option>
+    </select>
+
+    <button onclick="recommendMovies()">Get Recommendations</button>
+
+    <div id="recommendations"></div>
+
+    <script>
+        const movies = [
+            { title: "Avengers: Endgame", genre: "Action" },
+            { title: "Mad Max: Fury Road", genre: "Action" },
+            { title: "The Hangover", genre: "Comedy" },
+            { title: "Superbad", genre: "Comedy" },
+            { title: "The Conjuring", genre: "Horror" },
+            { title: "It", genre: "Horror" },
+            { title: "The Notebook", genre: "Romance" },
+            { title: "Pride & Prejudice", genre: "Romance" },
+            { title: "Interstellar", genre: "Sci-Fi" },
+            { title: "Inception", genre: "Sci-Fi" }
+        ];
+
+        function recommendMovies() {
+            const selectedGenre = document.getElementById("genreSelect").value;
+            const likedMovies = Array.from(document.getElementById("likedMovies").selectedOptions).map(o => o.value);
+            const recommendationsDiv = document.getElementById("recommendations");
+
+            if (!selectedGenre) {
+                recommendationsDiv.innerHTML = "Please select a genre!";
+                return;
+            }
+
+            const recommended = movies
+                .filter(m => m.genre === selectedGenre && !likedMovies.includes(m.title));
+
+            if (recommended.length === 0) {
+                recommendationsDiv.innerHTML = "No recommendations found.";
+            } else {
+                recommendationsDiv.innerHTML = "<h3>Recommended Movies:</h3><ul>" +
+                    recommended.map(m => `<li>${m.title}</li>`).join('') +
+                    "</ul>";
+            }
+        }
+    </script>
+</body>
+</html>
