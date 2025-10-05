@@ -7,6 +7,15 @@ This repository contains lab assignments, mini-projects, and learning resources 
 ## ✅ Completed Assignments
 
 - [Lab 1 - HTML_CSS_JS Form](./Assignment_no_1.html)
+- [Lab 2 - Face Detection using JS](./Assignment_no_2.html)
+- [Lab 3 - RESTful API](./Assignment_no_3.zip)
+- [Lab 4 - Login Auth](./Assignment_no_4.zip)
+- [Lab 5 - Sentiment Analysis](./Assignment_no_5.html)
+- [Lab 6 - Spam or ham Detection](./Assignment_no_6.html)
+- [Lab 7 - Text-to-speech](./Assignment_no_7.html)
+- [Lab 8 - Movie Recommendation System](./Assignment_no_8.html)
+- [Lab 9 - SQL Injection](./Assignment_no_9.zip)
+- [Lab 10 - Personalized Recommendation](./Assignment_no_10.html)
 
 More labs will be added as the course progresses.
 
